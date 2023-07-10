@@ -1,9 +1,10 @@
 import React from 'react'
 import "./styles/global.scss";
+import { RepositoryList } from './components/RepositoryList';
 
 export const App = () => {
   return (
-    <h1>Hello World ReactJs</h1>
+    <RepositoryList/>
   )
 }
 
