@@ -1,6 +1,7 @@
 import React from 'react'
 import { RepositoryItem } from './RepositoryItem'
-import { Counter } from './Counter'
+import "../styles/repositories.scss";
+
 const repository = {
     name:"ufornm2",
     description:"reacts/form",
@@ -17,7 +18,6 @@ export const RepositoryList = () => {
             <RepositoryItem repository={repository}/>
             <RepositoryItem/>
         </ul>
-        <Counter/>
     </section>
     
   )
