@@ -8,7 +8,7 @@ const repository = {
     link:"www.github.com"
 }
 export const RepositoryList = () => {
-
+  const [repositorie,setRepositories] = React.useState();
   return (
     <section className="repository-list">
         <h1>Lista de Repositórios</h1>
