@@ -2,11 +2,7 @@ import React from 'react'
 import { RepositoryItem } from './RepositoryItem'
 import "../styles/repositories.scss";
 // https://api.github.com/orgs/rocketseat/repos
-const repository = {
-    name:"ufornm2",
-    description:"reacts/form",
-    link:"www.github.com"
-}
+
 export const RepositoryList = () => {
   
     async function fetchGithub(){
@@ -16,7 +12,7 @@ export const RepositoryList = () => {
       console.log(data);
     }
 
-  const [repositories,setRepositories] = React.useState();
+  const [repositories,setRepositories] = React.useState([]);
 
   React.useEffect(()=>{
     fetchGithub();
@@ -25,10 +21,10 @@ export const RepositoryList = () => {
     <section className="repository-list">
         <h1>Lista de Repositórios</h1>
         <ul>
-            <RepositoryItem repository={repository}/>
-            <RepositoryItem repository={repository}/>
-            <RepositoryItem repository={repository}/>
-            <RepositoryItem/>
+            {repositories.map(rep =>{
+              return <RepositoryItem key={rep.name} repository={rep}/>
+            })}
+           
         </ul>
     </section>
     
