@@ -3,6 +3,12 @@ import { RepositoryItem } from './RepositoryItem'
 import "../styles/repositories.scss";
 // https://api.github.com/orgs/rocketseat/repos
 
+interface Repository{
+  name:string;
+  description:string;
+  html_url:string;
+}
+
 export const RepositoryList = () => {
   
     async function fetchGithub(){
@@ -12,7 +18,7 @@ export const RepositoryList = () => {
       console.log(data);
     }
 
-  const [repositories,setRepositories] = React.useState([]);
+  const [repositories,setRepositories] = React.useState<Repository[]>([]);
 
   React.useEffect(()=>{
     fetchGithub();
