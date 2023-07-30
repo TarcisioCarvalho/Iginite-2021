@@ -19,7 +19,11 @@ interface GenreResponseProps {
   title: string;
 }
 
-export function Content({id}:GenreResponseProps) {
+interface GenreIdNumber{
+  id:number;
+}
+
+export function Content({id}:GenreIdNumber) {
 
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [selectedGenre, setSelectedGenre] = useState<GenreResponseProps>({} as GenreResponseProps);
