@@ -4,18 +4,17 @@ import {App} from './App';
 import { createServer } from 'miragejs';
 
 createServer({
-  routes(){
+  routes() {
     this.namespace = "api";
-
-    this.get("transactions", ()=>{
-      return[
+    this.get("/transactions",() => {
+      return [
         {
           id:1,
-          Title:"Transaction 1"
+          title:"Transactions",
         }
       ]
     })
-  }
+  },
 })
 
 const root = ReactDOM.createRoot(
