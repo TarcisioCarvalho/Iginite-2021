@@ -63,4 +63,16 @@ button{
         position:relative;
         border-radius:0.25rem;
     }
+    .react-modal-close{
+        background:transparent;
+        position:absolute;
+        right:1.5rem;
+        top:1.5rem;
+        border:0;
+        transition:filter .2s;
+        
+        &:hover{
+            filter:brightness(.9);
+        }
+    }
 `;
