@@ -22,7 +22,7 @@ interface CartItemsAmount {
 }
 
 const Home = (): JSX.Element => {
-  // const [products, setProducts] = useState<ProductFormatted[]>([]);
+   const [products, setProducts] = useState<ProductFormatted[]>([]);
   // const { addProduct, cart } = useCart();
 
   // const cartItemsAmount = cart.reduce((sumAmount, product) => {
@@ -31,7 +31,15 @@ const Home = (): JSX.Element => {
 
   useEffect(() => {
     async function loadProducts() {
-      // TODO
+      api.get("/products")
+      .then(data => {
+        const product:ProductFormatted ={
+          id:data.data
+        }
+        setProducts(data.data)})
+      .catch(err => {
+        console.log(err);
+      })
     }
 
     loadProducts();
@@ -40,12 +48,14 @@ const Home = (): JSX.Element => {
   function handleAddProduct(id: number) {
     // TODO
   }
-
+  
   return (
+    
     <ProductList>
-      <li>
-        <img src="https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg" alt="Tênis de Caminhada Leve Confortável" />
-        <strong>Tênis de Caminhada Leve Confortável</strong>
+      {products?.map(product =>{
+        return( <li>
+        <img src={product.image} alt="Tênis de Caminhada Leve Confortável" />
+        <strong>{product.title}</strong>
         <span>R$ 179,90</span>
         <button
           type="button"
@@ -59,7 +69,8 @@ const Home = (): JSX.Element => {
 
           <span>ADICIONAR AO CARRINHO</span>
         </button>
-      </li>
+      </li>)
+      })}
     </ProductList>
   );
 };
