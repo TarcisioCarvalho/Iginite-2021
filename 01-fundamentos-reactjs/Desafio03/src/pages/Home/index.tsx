@@ -26,12 +26,12 @@ const Home = (): JSX.Element => {
    const { addProduct, cart } = useCart();
 
    const cartItemsAmount = cart.reduce((sumAmount, product) => {
-    if(sumAmount[product.id]) sumAmount[product.id] += 1;
-    if(!sumAmount[product.id]) sumAmount[product.id] = 1;
-
+  if(sumAmount[product.id]) sumAmount[product.id] +=1;
+  if(!sumAmount[product.id]) sumAmount[product.id] = 1;
     return sumAmount;
    }, {} as CartItemsAmount)
 
+   //console.log(cartItemsAmount);
   useEffect(() => {
     async function loadProducts() {
       api.get("/products")
@@ -53,7 +53,6 @@ const Home = (): JSX.Element => {
 
   function handleAddProduct(id: number) {
     addProduct(id);
-    console.log(cart);
   }
   
   return (
