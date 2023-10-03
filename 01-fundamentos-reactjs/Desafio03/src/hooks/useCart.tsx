@@ -52,7 +52,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         return prod;
       })
 
-      console.log(newCartList);
+     
       setCart(newCartList);
     }
 
