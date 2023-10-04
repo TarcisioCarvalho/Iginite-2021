@@ -19,16 +19,24 @@ interface Product {
 
 interface ProductFormatted extends Product {
   priceFormatted: string;
-  subtotal:number;
+  subtotal:string;
 }
 
 const Cart = (): JSX.Element => {
    const { cart, removeProduct, updateProductAmount } = useCart();
-   console.log(cart);
+   
 
-  /*  const cartFormatted :ProductFormatted[] = cart.map(product => ({
-     
-   })); */
+   const cartFormatted :ProductFormatted[] = cart.map(product => {
+    return {
+      id:product.id,
+      image:product.image,
+      price:product.price,
+      amount:product.amount,
+      title:product.title,
+      priceFormatted:formatPrice(product.price),
+      subtotal:formatPrice(product.price * product.amount),
+    }
+   });
   // const total =
   //   formatPrice(
   //     cart.reduce((sumTotal, product) => {
@@ -37,7 +45,7 @@ const Cart = (): JSX.Element => {
   //   )
 
   function handleProductIncrement(product: Product) {
-    // TODO
+    updateProductAmount({productId:product.id,amount:product.amount})
   }
 
   function handleProductDecrement(product: Product) {
@@ -62,14 +70,13 @@ const Cart = (): JSX.Element => {
         </thead>
         <tbody>
           {cartFormatted.map(productFormatted =>  {
-            return
-            <tr data-testid="product">
+            return(<tr key={productFormatted.id} data-testid="product">
             <td>
-              <img src="https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg" alt="Tênis de Caminhada Leve Confortável" />
+              <img src={productFormatted.image} alt={productFormatted.title}/>
             </td>
             <td>
-              <strong>Tênis de Caminhada Leve Confortável</strong>
-              <span>R$ 179,90</span>
+              <strong>{productFormatted.title}</strong>
+              <span>{productFormatted.priceFormatted}</span>
             </td>
             <td>
               <div>
@@ -85,19 +92,19 @@ const Cart = (): JSX.Element => {
                   type="text"
                   data-testid="product-amount"
                   readOnly
-                  value={2}
+                  value={productFormatted.amount}
                 />
                 <button
                   type="button"
                   data-testid="increment-product"
-                // onClick={() => handleProductIncrement()}
+                 onClick={() => handleProductIncrement(productFormatted)}
                 >
                   <MdAddCircleOutline size={20} />
                 </button>
               </div>
             </td>
             <td>
-              <strong>R$ 359,80</strong>
+              <strong>{productFormatted.subtotal}</strong>
             </td>
             <td>
               <button
@@ -108,7 +115,7 @@ const Cart = (): JSX.Element => {
                 <MdDelete size={20} />
               </button>
             </td>
-          </tr>
+          </tr>)
           })}
         </tbody>
       </ProductTable>

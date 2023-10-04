@@ -94,7 +94,23 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     amount,
   }: UpdateProductAmount) => {
     try {
-      // TODO
+      const newProduct = cart.find(prod => prod.id === productId);
+      if(newProduct){
+      const newCartList : Product[] = cart.map(prod => { 
+        
+        if(prod.id === newProduct.id) return {
+          id:prod.id,
+          image:prod.image,
+          title:prod.title,
+          price:prod.price,
+          amount: ++prod.amount
+        }
+        return prod;
+      })
+
+     
+      setCart(newCartList);
+    }
     } catch {
       // TODO
     }
