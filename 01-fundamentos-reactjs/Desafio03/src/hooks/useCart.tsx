@@ -111,7 +111,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
           image:prod.image,
           title:prod.title,
           price:prod.price,
-          amount: ++prod.amount
+          amount: amount
         }
         return prod;
       })
