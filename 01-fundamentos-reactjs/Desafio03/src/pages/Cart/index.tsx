@@ -40,7 +40,8 @@ const Cart = (): JSX.Element => {
    const total =
      formatPrice(
        cart.reduce((sumTotal, product) => {
-         sumTotal = product.amount * product.price;
+         console.log(sumTotal);
+         sumTotal += product.amount * product.price;
          return sumTotal;
        }, 0)
      )
