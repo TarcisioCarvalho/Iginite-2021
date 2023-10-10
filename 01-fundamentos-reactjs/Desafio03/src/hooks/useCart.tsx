@@ -51,8 +51,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         }
         return prod;
       })
-
-     
+      localStorage.setItem("@RocketShoes:cart",JSON.stringify(newCartList));
       setCart(newCartList);
     }
 
@@ -65,7 +64,13 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         title:response.title,
         price:response.price
       }]);
-    
+      localStorage.setItem("@RocketShoes:cart",JSON.stringify([...cart,{
+        id:response.id,
+        amount:1,
+        image:response.image,
+        title:response.title,
+        price:response.price
+      }]));
     };
       
       
@@ -90,6 +95,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         
         if(prod.id!==productId) return prod
       })
+      localStorage.setItem("@RocketShoes:cart",JSON.stringify(newCartList));
       setCart(newCartList);
     }
     } catch {
@@ -116,7 +122,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         return prod;
       })
 
-     
+      localStorage.setItem("@RocketShoes:cart",JSON.stringify(newCartList));
       setCart(newCartList);
     }
     } catch {
