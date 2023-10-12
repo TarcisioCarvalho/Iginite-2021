@@ -126,7 +126,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       setCart(newCartList);
     }
     } catch {
-      // TODO
+      toast.error
     }
   };
 
