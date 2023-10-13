@@ -82,7 +82,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         })
       }) */
     } catch {
-      // TODO
+      toast.error
     }
   };
 
