@@ -99,7 +99,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       setCart(newCartList);
     }
     } catch {
-      toast.error
+      toast.error("Quantidade solicitada fora de estoque");
     }
   };
 
