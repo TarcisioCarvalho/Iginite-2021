@@ -82,7 +82,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         })
       }) */
     } catch {
-      toast.error("Quantidade solicitada fora de estoque");
+      toast.error("Quantidade solicitada fora de estoque!!!");
     }
   };
 
