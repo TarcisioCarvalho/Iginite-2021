@@ -41,11 +41,11 @@ const Home = (): JSX.Element => {
       [product.id]:product.amount
     }
    }, {} as CartItemsAmount)
-   console.log("cartItemsAmount", cartItemsAmount);
+   
    
   useEffect(() => {
     async function loadProducts() {
-      api.get("/products")
+      api.get<Product[]>("/products")
       .then(data => {
         const productsFormatted:ProductFormatted[] = data.data.map(product => {
           return{...product,
