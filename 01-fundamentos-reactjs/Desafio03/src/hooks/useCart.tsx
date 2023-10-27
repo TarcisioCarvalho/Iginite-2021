@@ -92,7 +92,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         })
       }) */
     } catch {
-      toast.error("Erro na adição do produto");
+      toast.error("Erro na adição do produto!!");
     }
   };
 
